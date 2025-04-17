@@ -1,0 +1,207 @@
+﻿
+@{
+    Layout = "../Shared/_homelayout.cshtml";
+}
+@using Project.Models;
+@model List<Bouquet>
+
+<section class="section-products mt-5">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="header">
+                        <h3>Bouquets For Buy</h3>
+                        <h2>Popular Bouquets</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            @foreach (var flower in Model)
+            {
+                <!-- Single Product -->
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div id="product-1" class="single-product">
+                        <div class="part-1">
+                            <img src="~/images/@flower.image" alt="">
+                            
+                            <ul>
+                                
+
+                                <li><a href="@Url.Action("Detailpage","Bouquet",new{id=flower.id})"><i class="fas fa-expand"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="part-2">
+                            <h3 class="product-title">@flower.name</h3>
+                            <h4 class="product-old-price">800Rs</h4>
+                            <h4 class="product-price">@flower.price/Rs</h4>
+                        </div>
+                    </div>
+                </div>
+              }
+            </div>
+        </div>
+    </section>
+<section class="gallery_section layout_padding">
+
+    <div class="heading_container justify-content-center">
+        <h2>
+            Our Gallery
+        </h2>
+    </div>
+    <div class="container">
+        <div class="img_container">
+            <div class="box-1">
+                <div class="box-1-container">
+                    <div class="b-1">
+                        <div class="img-box">
+                            <img src="~/home/images/g-1.jpg" alt="">
+                        </div>
+                        <div class="img-box">
+                            <img src="~/home/images/g-4.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="b-2">
+                        <div class="img-box">
+                            <img src="~/home/images/g-2.jpg" alt="">
+                        </div>
+                        <div class="img-box">
+                            <img src="~/home/images/g-5.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="b-3">
+                    <div class="img-box">
+                        <img src="~/home/images/g-7.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="box-2">
+                <div class="img-box">
+                    <img src="~/home/images/g-3.jpg" alt="">
+                </div>
+                <div class="img-box">
+                    <img src="~/home/images/g-6.jpg" alt="">
+                </div>
+                <div class="img-box flex-grow-1">
+                    <img src="~/home/images/g-8.jpg" alt="">
+                </div>
+            </div>
+        </div>
+</section>
+<!-- end gallery section -->
+<!-- info section -->
+<section class="info_section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="info_logo">
+                    <h5>
+                        Floral
+                    </h5>
+                    <p>
+                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="info_links pl-lg-5">
+                    <h5>
+                        Useful Link
+                    </h5>
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("Home","Customer")">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("About","Customer")">
+                                About
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="@Url.Action("Gallery","Customer")">
+                                Bouquets
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Contact","Customer")">
+                                Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="info_insta">
+                    <h5>
+                        Instagram
+                    </h5>
+                    <div class="insta_container">
+                        <div>
+                            <a href="">
+                                <div class="insta-box b-1">
+                                    <img src="~/home/images/insta-1.png" alt="">
+                                </div>
+                            </a>
+                            <a href="">
+                                <div class="insta-box b-2">
+                                    <img src="~/home/images/insta-2.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <div class="insta-box b-3">
+                                    <img src="~/home/images/insta-3.png" alt="">
+                                </div>
+                            </a>
+                            <a href="">
+                                <div class="insta-box b-4">
+                                    <img src="~/home/images/insta-4.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <div class="insta-box b-3">
+                                    <img src="~/home/images/insta-5.png" alt="">
+                                </div>
+                            </a>
+                            <a href="">
+                                <div class="insta-box b-4">
+                                    <img src="~/home/images/insta-6.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="info_contact">
+                    <h5>
+                        Contact
+                    </h5>
+                    <div>
+                        <img src="~/home/images/location-white.png" alt="">
+                        <p>
+                            Aptech Metro Stargate
+                        </p>
+                    </div>
+                    <div>
+                        <img src="~/home/images/telephone-white.png" alt="">
+                        <p>
+                            +923343626807
+                        </p>
+                    </div>
+                    <div>
+                        <img src="~/home/images/envelope-white.png" alt="">
+                        <p>
+                            floral@gmail.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

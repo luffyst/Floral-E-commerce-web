@@ -1,0 +1,370 @@
+﻿@{
+    Layout = "../Shared/_homelayout.cshtml";
+}
+@model Project.Models.Bouquet;
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<!------ Include the above in your HEAD tag ---------->
+
+
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <!------ Include the above in your HEAD tag ---------->
+    <style>
+       
+
+        .item-photo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid #f6f6f6;
+            width: 550px;
+            height: 400px;
+        }
+
+        .menu-items {
+            list-style-type: none;
+            font-size: 11px;
+            display: inline-flex;
+            margin-bottom: 0;
+            margin-top: 20px
+        }
+
+        .btn-success {
+            width: 100%;
+            border-radius: 0;
+        }
+
+        #sc {
+            width: 100%;
+            margin-left: -15px;
+            padding: 2px;
+            padding-left: 15px;
+            padding-right: 15px;
+            background: #f8f9f9
+        }
+
+        .title-price {
+            margin-top: 30px;
+            margin-bottom: 0;
+            color: black
+        }
+
+        .title-attr {
+            margin-top: 0;
+            margin-bottom: 0;
+            color: black;
+        }
+
+        .btn-minus {
+            cursor: pointer;
+            font-size: 7px;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border: 1px solid gray;
+            border-radius: 2px;
+            border-right: 0;
+        }
+
+        .btn-plus {
+            cursor: pointer;
+            font-size: 7px;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border: 1px solid gray;
+            border-radius: 2px;
+            border-left: 0;
+        }
+
+        div.section>div {
+            width: 100%;
+            display: inline-flex;
+        }
+
+        div.section>div>input {
+            margin: 0;
+            padding-left: 5px;
+            font-size: 10px;
+            padding-right: 5px;
+            max-width: 18%;
+            text-align: center;
+        }
+
+        .attr,
+        .attr2 {
+            cursor: pointer;
+            margin-right: 5px;
+            height: 20px;
+            font-size: 10px;
+            padding: 2px;
+            border: 1px solid gray;
+            border-radius: 2px;
+        }
+
+        .attr.active,
+        .attr2.active {
+            border: 1px solid orange;
+        }
+
+        @@media (max-width: 426px) {
+            #cnt {
+                margin-top: 100px !important;
+            }
+
+            #cnt>.row {
+                padding: 0 !important;
+            }
+
+            #cnt>.row>.col-xs-12.col-sm-5 {
+                padding-right: 0;
+            }
+
+            #cnt>.row>.col-xs-12.col-sm-9>div>p {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+
+            #cnt>.row>.col-xs-12.col-sm-9>div>ul {
+                padding-left: 0 !important;
+
+            }
+
+            #sc {
+                width: 104%;
+            }
+
+            .menu-items {
+                padding-left: 0;
+            }
+        }
+
+        .center-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+
+
+    
+    
+   
+    <div class="center-content">
+        <div class="row">
+      
+            <div class="container" id="cnt">
+                <div class="row">
+                  
+                    <div class="col-xs-4 item-photo">
+                        <img style="width:100%; height:400px;" src="~/images/@Model.image" />
+                    </div>
+
+                    <div class="col-xs-5" style="border:0px solid gray">
+                        <!-- Datos del vendedor y titulo del producto -->
+                        <h3>@Model.name</h3>
+
+
+                        <!-- Precios -->
+                        <h6 class="title-price"><small>Price</small></h6>
+                        <h3 style="margin-top:0px;">@Model.price/Rs</h3>
+                        
+                        
+                        
+                        <form action="@Url.Action("addtocart","Bouquet")" method="POST">
+                            
+                            <div class="section" id="sc" style="padding-bottom:20px;">
+                                <h6 class="title-attr"><small>Order Quantity</small></h6>
+                                <div>
+                                    <div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>
+                                    <input value="1" name="qty"/>
+                                    <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="id" value="@Model.id">
+                            <input type="hidden" name="price" value="@Model.price">
+                            <input type="hidden" name="name" value="@Model.name">
+                            <input type="hidden" name="image" value="/images/@Model.image">
+                            
+                            <!-- Botones de compra -->
+                            <div class="section" id="sc" style="padding-bottom:20px;">
+                                <span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><button class="btn btn-success">Add To Cart</button>
+                                
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    
+<section class="info_section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="info_logo">
+                    <h5>
+                        Floral
+                    </h5>
+                    <p>
+                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="info_links pl-lg-5">
+                    <h5>
+                        Useful Link
+                    </h5>
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("Home","Customer")">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("About","Customer")">
+                                About
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="@Url.Action("Gallery","Customer")">
+                                Bouquets
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Contact","Customer")">
+                                Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="info_insta">
+                    <h5>
+                        Instagram
+                    </h5>
+                    <div class="insta_container">
+                        <div>
+                            <a href="">
+                                <div class="insta-box b-1">
+                                    <img src="~/home/images/insta-1.png" alt="">
+                                </div>
+                            </a>
+                            <a href="">
+                                <div class="insta-box b-2">
+                                    <img src="~/home/images/insta-2.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <div class="insta-box b-3">
+                                    <img src="~/home/images/insta-3.png" alt="">
+                                </div>
+                            </a>
+                            <a href="">
+                                <div class="insta-box b-4">
+                                    <img src="~/home/images/insta-4.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <div class="insta-box b-3">
+                                    <img src="~/home/images/insta-5.png" alt="">
+                                </div>
+                            </a>
+                            <a href="">
+                                <div class="insta-box b-4">
+                                    <img src="~/home/images/insta-6.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="info_contact">
+                    <h5>
+                        Contact
+                    </h5>
+                    <div>
+                        <img src="~/home/images/location-white.png" alt="">
+                        <p>
+                            Aptech Metro Stargate
+                        </p>
+                    </div>
+                    <div>
+                        <img src="~/home/images/telephone-white.png" alt="">
+                        <p>
+                            +923343626807
+                        </p>
+                    </div>
+                    <div>
+                        <img src="~/home/images/envelope-white.png" alt="">
+                        <p>
+                            floral@gmail.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        //-- Click on detail
+        $("ul.menu-items > li").on("click", function () {
+            $("ul.menu-items > li").removeClass("active");
+            $(this).addClass("active");
+        })
+
+        $(".attr,.attr2").on("click", function () {
+            var clase = $(this).attr("class");
+
+            $("." + clase).removeClass("active");
+            $(this).addClass("active");
+        })
+
+        //-- Click on QUANTITY
+        $(".btn-minus").on("click", function () {
+            var now = $(".section > div > input").val();
+            if ($.isNumeric(now)) {
+                if (parseInt(now) - 1 > 0) {
+                    now--;
+                }
+                $(".section > div > input").val(now);
+            } else {
+                $(".section > div > input").val("1");
+            }
+        })
+        $(".btn-plus").on("click", function () {
+            var now = $(".section > div > input").val();
+            if ($.isNumeric(now)) {
+                $(".section > div > input").val(parseInt(now) + 1);
+            } else {
+                $(".section > div > input").val("1");
+            }
+        })
+    })
+</script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>

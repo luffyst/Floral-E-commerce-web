@@ -1,0 +1,288 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor;
+@using Project.Data;
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Floral</title>
+    
+
+    <!-- slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="~/home/css/bootstrap.css" />
+
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Poppins:400,600,700&display=swap" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="~/home/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="~/home/css/responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        
+
+        body {
+            font-family: "Poppins", sans-serif;
+            color: #444444;
+        }
+
+        a,
+        a:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .section-products {
+            padding: 80px 0 54px;
+        }
+
+        .section-products .header {
+            margin-bottom: 50px;
+        }
+
+        .section-products .header h3 {
+            font-size: 1rem;
+            color: #fe302f;
+            font-weight: 500;
+        }
+
+        .section-products .header h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: #fe302f;
+        }
+
+        .section-products .single-product {
+            margin-bottom: 26px;
+        }
+
+        .section-products .single-product .part-1 {
+            position: relative;
+            height: 290px;
+            max-height: 290px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .section-products .single-product .part-1::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            transition: all 0.3s;
+        }
+
+        .section-products .single-product:hover .part-1::before {
+            transform: scale(1.2, 1.2) rotate(5deg);
+        }
+
+        .section-products #product-1 .part-1::before {
+            background-size: cover;
+            transition: all 0.3s;
+        }
+
+        .section-products #product-2 .part-1::before {
+            background-size: cover;
+        }
+
+        .section-products #product-3 .part-1::before {
+
+            background-size: cover;
+        }
+
+        .section-products #product-4 .part-1::before {
+            background-size: cover;
+        }
+
+        .section-products .single-product .part-1 .discount,
+        .section-products .single-product .part-1 .new {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            color: #ffffff;
+            background-color: #fe302f;
+            padding: 2px 8px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .section-products .single-product .part-1 .new {
+            left: 0;
+            background-color: #444444;
+        }
+
+        .section-products .single-product .part-1 ul {
+            position: absolute;
+            bottom: -41px;
+            left: 20px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            opacity: 0;
+            transition: bottom 0.5s, opacity 0.5s;
+        }
+
+        .section-products .single-product:hover .part-1 ul {
+            bottom: 30px;
+            opacity: 1;
+        }
+
+        .section-products .single-product .part-1 ul li {
+            display: inline-block;
+            margin-right: 4px;
+        }
+
+        .section-products .single-product .part-1 ul li a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background-color: #ffffff;
+            color: #444444;
+            text-align: center;
+            box-shadow: 0 2px 20px rgb(50 50 50 / 10%);
+            transition: color 0.2s;
+        }
+
+        .section-products .single-product .part-1 ul li a:hover {
+            color: #fe302f;
+        }
+
+        .section-products .single-product .part-2 .product-title {
+            font-size: 1rem;
+        }
+
+        .section-products .single-product .part-2 h4 {
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .section-products .single-product .part-2 .product-old-price {
+            position: relative;
+            padding: 0 7px;
+            margin-right: 2px;
+            opacity: 0.6;
+        }
+
+        .section-products .single-product .part-2 .product-old-price::after {
+            position: absolute;
+            content: "";
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #444444;
+            transform: translateY(-50%);
+        }
+        .section-products .single-product .part-1 img{
+            height: 290px;
+            max-height: 290px;
+        }
+        .section-products .single-product .part-2 img{
+            height: 290px;
+            max-height: 290px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+                <a class="navbar-brand" href="@Url.Action("Home","Customer")">
+                    <span>
+                        Floral
+                    </span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+                        <ul class="navbar-nav  ">
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Home","Customer")">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("About","Customer")"> About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Gallery","Customer")"> Bouquets </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Contact","Customer")">Contact us</a>
+                            </li>
+                                @if (Accessor.HttpContext.Session.GetString("User_role") != null)
+                                {
+                            <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("fetchOrder","Orders")">My Orders</a>
+                            </li>
+                                }
+                                
+                        </ul>
+                    </div>
+                    <div class="quote_btn-container ">
+                        @if (Accessor.HttpContext.Session.GetString("User_role") != null)
+                        {
+                            <a href="@Url.Action("Logout","Customer")">
+                                Logout
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Login","Customer")">
+                                Login
+                            </a>
+
+                        }
+
+                        <a href="@Url.Action("cart", "Cart")">
+                            <img src="~/home/images/cart.png" alt="">
+                        </a>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+   
+    @RenderBody()
+    <!-- end info_section -->
+    <!-- footer section -->
+    <footer class="container-fluid footer_section">
+        <p>
+            &copy; <span id="displayYear"></span> All Rights Reserved By
+            <a href="@Url.Action("Home","Customer")">WWW.Floral.COM</a>
+        </p>
+    </footer>
+    <!-- footer section -->
+
+    <script type="text/javascript" src="~/home/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="~/home/js/bootstrap.js"></script>
+    <script type="text/javascript" src="~/home/js/custom.js"></script>
+    <!-- Google Map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+    </script>
+    <!-- End Google Map -->
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Document\\Project\\Asp.net ecommerce\\E-Project Floral\\Project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DC2BC40A-4253-4518-B973-60A722978A3F}|Project\\Project.csproj|d:\\document\\project\\asp.net ecommerce\\e-project floral\\project\\project\\controllers\\bouquetcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC2BC40A-4253-4518-B973-60A722978A3F}|Project\\Project.csproj|solutionrelative:project\\controllers\\bouquetcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BouquetController.cs",
+              "DocumentMoniker": "D:\\Document\\Project\\Asp.net ecommerce\\E-Project Floral\\Project\\Project\\Controllers\\BouquetController.cs",
+              "RelativeDocumentMoniker": "Project\\Controllers\\BouquetController.cs",
+              "ToolTip": "D:\\Document\\Project\\Asp.net ecommerce\\E-Project Floral\\Project\\Project\\Controllers\\BouquetController.cs",
+              "RelativeToolTip": "Project\\Controllers\\BouquetController.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAABkAAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-03T07:39:45.915Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

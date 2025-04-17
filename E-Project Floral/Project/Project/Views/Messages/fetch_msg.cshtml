@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+@using Project.Models;
+@model List<Message>
+<div class="main-panel">
+    <div class="content-wrapper pb-0">
+        <div class="page-header flex-wrap">
+            <h3 class="mb-0">
+                Customer Messages
+            </h3>
+
+        </div>
+        <div class="col-md-12 grid-margin stretch-card">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope ="col">Messages</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var msg in Model)
+                    {
+                        <tr>
+
+                            <td>@msg.id</td>
+                            <td>@msg.name</td>
+                            <td>@msg.email</td>
+                            <td>@msg.phone</td>
+                            <td>@msg.message</td>
+                            <td>
+                              
+                                <a href="@Url.Action("delete_msg","Messages",new {id=msg.id})">Delete</a>
+                            </td>
+                            
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- main-panel ends -->
+</div>
+<!-- page-body-wrapper ends -->

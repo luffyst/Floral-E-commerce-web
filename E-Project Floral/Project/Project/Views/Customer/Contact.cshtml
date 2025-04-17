@@ -1,0 +1,158 @@
+﻿
+@{
+    Layout = "../Shared/_homelayout.cshtml";
+}
+
+<section class="contact_section layout_padding">
+    <div class="container ">
+        <div class="heading_container justify-content-center">
+            <h2 class="">
+                Contact Us
+            </h2>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <form action="@Url.Action("ins_msg","Messages")" method="post">
+                    <div>
+                        <input type="text" name="name" required placeholder="Name" />
+                    </div>
+                    <div>
+                        <input type="email" name="email" required placeholder="Email" />
+                    </div>
+                    <div>
+                        <input type="text" name="phone" required placeholder="Pone Number" />
+                    </div>
+                    <div>
+                        <input type="text" name="message" required class="message-box" placeholder="Message" />
+                    </div>
+                    <div class="d-flex  mt-4 ">
+                        <button value="submit"> 
+                            SEND
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end contact section -->
+<!-- info section -->
+<section class="info_section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="info_logo">
+                    <h5>
+                        Floral
+                    </h5>
+                    <p>
+                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="info_links pl-lg-5">
+                    <h5>
+                        Useful Link
+                    </h5>
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("Home","Customer")">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("About","Customer")">
+                                About
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Gallery","Customer")">
+                                Bouquets
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="@Url.Action("Contact","Customer")">
+                                Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="info_insta">
+                    <h5>
+                        Instagram
+                    </h5>
+                    <div class="insta_container">
+                        <div>
+                            <a href="">
+                                <div class="insta-box b-1">
+                                    <img src="~/home/images/insta-1.png" alt="">
+                                </div>
+                            </a>
+                            <a href="">
+                                <div class="insta-box b-2">
+                                    <img src="~/home/images/insta-2.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <div class="insta-box b-3">
+                                    <img src="~/home/images/insta-3.png" alt="">
+                                </div>
+                            </a>
+                            <a href="">
+                                <div class="insta-box b-4">
+                                    <img src="~/home/images/insta-4.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <div class="insta-box b-3">
+                                    <img src="~/home/images/insta-5.png" alt="">
+                                </div>
+                            </a>
+                            <a href="">
+                                <div class="insta-box b-4">
+                                    <img src="~/home/images/insta-6.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="info_contact">
+                    <h5>
+                        Contact
+                    </h5>
+                    <div>
+                        <img src="~/home/images/location-white.png" alt="">
+                        <p>
+                            Aptech Metro Stargate
+                        </p>
+                    </div>
+                    <div>
+                        <img src="~/home/images/telephone-white.png" alt="">
+                        <p>
+                            +923343626807
+                        </p>
+                    </div>
+                    <div>
+                        <img src="~/home/images/envelope-white.png" alt="">
+                        <p>
+                            floral@gmail.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

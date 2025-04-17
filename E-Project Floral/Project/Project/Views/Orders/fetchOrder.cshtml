@@ -1,0 +1,223 @@
+﻿@using Project.Models;
+@model List<Order>
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor;
+@using Project.Data;
+
+@{
+    if (Accessor.HttpContext.Session.GetString("User_role") == "admin")
+        Layout = "../Shared/_Layout.cshtml";
+    else
+    {
+        Layout = "../Shared/_homelayout.cshtml";
+      }
+
+    
+}
+
+
+<div class="main-panel">
+    <div class="content-wrapper pb-0">
+        <div class="page-header flex-wrap">
+            <h4 class="mb-0">
+                Customer Order Here
+            </h4>
+            
+        </div>
+
+    <div class="col-md-12 grid-margin stretch-card">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Customer</th>
+                        <th scope="col">Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)    
+                {
+                        if (Accessor.HttpContext.Session.GetString("User_role") == "admin")
+                        {
+                            <tr>
+
+                                <td>@item.OrderId</td>
+                                <td>@item.Bouquet.name</td>
+                                <td>@item.Bouquet.price</td>
+                                <td><img src="~/images/@item.Bouquet.image" height="100px" width="100px" /></td>
+                                <td>@item.Quantity</td>
+                                <td>
+                                    @(item.Quantity * int.Parse(item.Bouquet.price))
+                                </td>
+                                <td>@item.DiliveryAddress</td>
+                                <td>@item.Customer.f_name</td>
+                                <td>@item.Status</td>
+                                <td>
+                                    @* add deleteOrder method in OrderController *@
+                                    <a href="@Url.Action("deleteOrder","Orders",new {id=item.OrderId})">Delete</a>
+                                </td>
+                            </tr>
+                        }else{
+                            if (item.CustId == int.Parse(Accessor.HttpContext.Session.GetString("User_id"))){
+                                <tr>
+
+                                    <td>@item.OrderId</td>
+                                    <td>@item.Bouquet.name</td>
+                                    <td>@item.Bouquet.price</td>
+                                    <td><img src="~/images/@item.Bouquet.image" height="100px" width="100px" /></td>
+                                    <td>@item.Quantity</td>
+                                    <td>
+                                        @(item.Quantity * int.Parse(item.Bouquet.price))
+                                    </td>
+                                    <td>@item.DiliveryAddress</td>
+                                    <td>@item.Customer.f_name</td>
+                                    <td>@item.Status</td>
+                                    <td>
+                                        @* add deleteOrder method in OrderController *@
+                                        <a href="@Url.Action("deleteOrder","Orders",new {id=item.OrderId})">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+    </div>
+    <!-- main-panel ends -->
+</div>
+@{
+    if (Accessor.HttpContext.Session.GetString("User_role") == "admin")
+        Layout = "../Shared/_Layout.cshtml";
+    else
+    {
+        <section class="info_section layout_padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="info_logo">
+                            <h5>
+                                Floral
+                            </h5>
+                            <p>
+                                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info_links pl-lg-5">
+                            <h5>
+                                Useful Link
+                            </h5>
+                            <ul>
+                                <li>
+                                    <a href="@Url.Action("Home","Customer")">
+                                        Home
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("About","Customer")">
+                                        About
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <a href="@Url.Action("Gallery","Customer")">
+                                        Gallery
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Contact","Customer")">
+                                        Contact Us
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info_insta">
+                            <h5>
+                                Instagram
+                            </h5>
+                            <div class="insta_container">
+                                <div>
+                                    <a href="">
+                                        <div class="insta-box b-1">
+                                            <img src="~/home/images/insta-1.png" alt="">
+                                        </div>
+                                    </a>
+                                    <a href="">
+                                        <div class="insta-box b-2">
+                                            <img src="~/home/images/insta-2.png" alt="">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="">
+                                        <div class="insta-box b-3">
+                                            <img src="~/home/images/insta-3.png" alt="">
+                                        </div>
+                                    </a>
+                                    <a href="">
+                                        <div class="insta-box b-4">
+                                            <img src="~/home/images/insta-4.png" alt="">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="">
+                                        <div class="insta-box b-3">
+                                            <img src="~/home/images/insta-5.png" alt="">
+                                        </div>
+                                    </a>
+                                    <a href="">
+                                        <div class="insta-box b-4">
+                                            <img src="~/home/images/insta-6.png" alt="">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info_contact">
+                            <h5>
+                                Contact
+                            </h5>
+                            <div>
+                                <img src="~/home/images/location-white.png" alt="">
+                                <p>
+                                    Aptech Metro Stargate
+                                </p>
+                            </div>
+                            <div>
+                                <img src="~/home/images/telephone-white.png" alt="">
+                                <p>
+                                    +923343626807
+                                </p>
+                            </div>
+                            <div>
+                                <img src="~/home/images/envelope-white.png" alt="">
+                                <p>
+                                    floral@gmail.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
+
+}

@@ -1,0 +1,221 @@
+﻿
+@{
+    Layout = "../Shared/_homelayout.cshtml";
+}
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor;
+@using Project.Data;
+<head>
+    <link href="~/reg/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="~/reg/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="~/reg/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/reg/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="~/reg/css/main.css" rel="stylesheet" media="all">
+</head>
+
+<section class="section-products mt-5">
+   
+        <div class="col-md-12 grid-margin stretch-card">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Quantity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.Cart)
+                    
+                    {
+                        <tr>
+
+                            <td>@item["id"]</td>
+                            <td>@item["name"]</td>
+                            <td>@item["price"]</td>
+                            <td><img src="@item["image"]" height="100px" width="100px" /></td>
+                            <td>@item["qty"]</td>
+                            <td>
+                        
+                        <a href="@Url.Action("deletecart","Cart",new {id=ViewBag.Cart.IndexOf(item)})">Delete</a>
+                            </td>
+                        </tr>
+                    
+                    }
+
+                </tbody>
+            </table>
+        </div>
+        </section>
+
+        <div class="card card-4">
+            <div class="card-body">
+                <h2 class="title">Confirm Order</h2>
+        <form method="POST" action="@Url.Action("addorders","Orders")">
+
+                    <div>
+                        <div>
+                            <div class="input-group">
+                                <label class="label">Delivery Address</label>
+                                <input class="input--style-4" type="text" name="deliveryaddress">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div>
+                        <div>
+                            <div class="input-group">
+                                <label class="label">Cash On Delivery</label>
+                                <input class="input--style-4" type="radio" name="cod">
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="p-t-15">
+                <input type="hidden" name="custId" value="@Accessor.HttpContext.Session.GetString("User_id")" />
+
+                    @* <h1>@Accessor.HttpContext.Session.GetString("User_id")</h1> *@
+                        <button class="btn btn--radius-2 btn--blue" value="submit" type="submit">Place Order</button>
+                    </div>
+                </form>
+                
+                <br />
+
+            </div>
+        </div>
+    
+
+<section class="info_section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="info_logo">
+                    <h5>
+                        Floral
+                    </h5>
+                    <p>
+                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="info_links pl-lg-5">
+                    <h5>
+                        Useful Link
+                    </h5>
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("Home","Customer")">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("About","Customer")">
+                                About
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="@Url.Action("Gallery","Customer")">
+                                Gallery
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Contact","Customer")">
+                                Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="info_insta">
+                    <h5>
+                        Instagram
+                    </h5>
+                    <div class="insta_container">
+                        <div>
+                            <a href="">
+                                <div class="insta-box b-1">
+                                    <img src="~/home/images/insta-1.png" alt="">
+                                </div>
+                            </a>
+                            <a href="">
+                                <div class="insta-box b-2">
+                                    <img src="~/home/images/insta-2.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <div class="insta-box b-3">
+                                    <img src="~/home/images/insta-3.png" alt="">
+                                </div>
+                            </a>
+                            <a href="">
+                                <div class="insta-box b-4">
+                                    <img src="~/home/images/insta-4.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <div class="insta-box b-3">
+                                    <img src="~/home/images/insta-5.png" alt="">
+                                </div>
+                            </a>
+                            <a href="">
+                                <div class="insta-box b-4">
+                                    <img src="~/home/images/insta-6.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="info_contact">
+                    <h5>
+                        Contact
+                    </h5>
+                    <div>
+                        <img src="~/home/images/location-white.png" alt="">
+                        <p>
+                            Aptech Metro Stargate
+                        </p>
+                    </div>
+                    <div>
+                        <img src="~/home/images/telephone-white.png" alt="">
+                        <p>
+                            +923343626807
+                        </p>
+                    </div>
+                    <div>
+                        <img src="~/home/images/envelope-white.png" alt="">
+                        <p>
+                            floral@gmail.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/reg/vendor/jquery/jquery.min.js"></script>
+<!-- Vendor JS-->
+<script src="~/reg/vendor/select2/select2.min.js"></script>
+<script src="~/reg/vendor/datepicker/moment.min.js"></script>
+<script src="~/reg/vendor/datepicker/daterangepicker.js"></script>
+
+<!-- Main JS-->
+<script src="~/reg/js/global.js"> </script>

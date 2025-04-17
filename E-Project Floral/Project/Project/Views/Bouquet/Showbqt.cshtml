@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+@using Project.Models;
+@model List<Bouquet>
+<div class="main-panel">
+    <div class="content-wrapper pb-0">
+        <div class="page-header flex-wrap">
+            <h3 class="mb-0">
+                Bouquets and Products Here
+            </h3>
+            
+        </div>
+        <div class="col-md-12 grid-margin stretch-card">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Image</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var bt in Model)
+                    {
+                        <tr>
+
+                            <td>@bt.id</td>
+                            <td>@bt.name</td>
+                            <td>@bt.price</td>
+                            <td><img src="~/images/@bt.image" height="100px"/></td>
+                            <td>
+                                <a href="@Url.Action("editbouquets","bouquet",new {id=bt.id})" >Edit</a>
+                                <a href="@Url.Action("deletebouquets","bouquet",new {id=bt.id})">Delete</a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- main-panel ends -->
+</div>
+<!-- page-body-wrapper ends -->
+    
